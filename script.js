@@ -111,7 +111,7 @@ function phaseOne() {
         drawLines();
 
         if (isFocusing && focusBall) {
-            focusProgress += 0.001; 
+            focusProgress += 0.003; 
             const easedProgress = easeInOutQuad(focusProgress);
 
             const targetX = canvas.width / 2;
@@ -156,4 +156,28 @@ function phaseOne() {
 
 function phaseTwo() {
     console.log('Phase Two is running');
+
+    // Set the HTML background to black
+    document.body.style.backgroundColor = 'black';
+
+    // Get the canvas element and initialize transparency variables
+    const canvas = document.getElementById('canvas');
+    let opacity = 1; // Start fully opaque
+    const fadeOutSpeed = 0.05; // Speed of fading out
+
+    // Function to gradually fade out the canvas
+    function fadeOutCanvas() {
+        if (opacity > 0) {
+            opacity -= fadeOutSpeed;
+            canvas.style.opacity = opacity;
+            requestAnimationFrame(fadeOutCanvas);
+        } else {
+            // Remove the canvas from the DOM after fading out
+            canvas.parentNode.removeChild(canvas);
+        }
+    }
+
+    // Start fading out the canvas
+    fadeOutCanvas();
 }
+

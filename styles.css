@@ -2,9 +2,14 @@ body {
     margin: 0;
     overflow: hidden;
     font-family: 'Arial', sans-serif;
+    --color: rgba(114, 114, 114, 0.3);
+    background-color: #191a1a;
+  background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+      linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+      background-size: 55px 55px;
 }
 
-#loaded-animation {
+.phaseOne #loaded-animation {
     position: fixed;
     top: 0;
     left: 0;
@@ -16,7 +21,7 @@ body {
     z-index: 9999;
 }
 
-#canvas {
+.phaseOne #canvas {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +30,7 @@ body {
     background-color: #000;
 }
 
-.overlay {
+.phaseOne .overlay {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,23 +47,28 @@ body {
     font-size: 18px;
     line-height: 1.6;
     z-index: 10000;
+    display: flex; /* Flexbox for centering */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }
 
-.overlay h1 {
+.phaseOne .overlay h1 {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #7895a1; /* A vibrant color for the title */
+    color: white; /* A vibrant color for the title */
 }
 
-.overlay p {
+.phaseOne .overlay p {
     font-size: 18px;
     margin-bottom: 20px;
-    color: #ddd;
+    color: rgba(156, 163, 175,1);
 }
 
-.overlay button {
-  transform: translateX(100%);
+.phaseOne .overlay button {
+    position: relative;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -70,13 +80,13 @@ body {
   border-radius: 100px;
   font-weight: 600;
   color: white;
-  box-shadow: 0 0 0 2px white;
+  box-shadow: 0 0 0 2px rgb(167, 139, 250);
   cursor: pointer;
   overflow: hidden;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.overlay button svg {
+.phaseOne .overlay button svg {
   position: absolute;
   width: 24px;
   fill: white;
@@ -84,82 +94,201 @@ body {
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.overlay button .arr-1 {
+.phaseOne .overlay button .arr-1 {
   right: 16px;
 }
 
-.overlay button .arr-2 {
+.phaseOne .overlay button .arr-2 {
   left: -25%;
 }
 
-.overlay button .circle {
+.phaseOne .overlay button .circle {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 20px;
   height: 20px;
-  background-color: white;
+  background-color: rgb(167, 139, 250);
   border-radius: 50%;
   opacity: 0;
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.overlay button .text {
+ .phaseOne .overlay button .text {
   position: relative;
   z-index: 1;
   transform: translateX(-12px);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.overlay button:hover {
+.phaseOne .overlay button:hover {
   box-shadow: 0 0 0 12px transparent;
-  color: black;
+  color: white;
   border-radius: 12px;
 }
 
-.overlay button:hover .arr-1 {
+.phaseOne .overlay button:hover .arr-1 {
   right: -25%;
 }
 
-.overlay button:hover .arr-2 {
+.phaseOne .overlay button:hover .arr-2 {
   left: 16px;
 }
 
-.overlay button:hover .text {
+.phaseOne .overlay button:hover .text {
   transform: translateX(12px);
 }
 
-.overlay button:hover svg {
-  fill: black;
+.phaseOne .overlay button:hover svg {
+  fill: white;
 }
 
-.overlay button:active {
+.phaseOne .overlay button:active {
   scale: 0.95;
   box-shadow: 0 0 0 4px white;
 }
 
-.overlay button:hover .circle {
+.phaseOne .overlay button:hover .circle {
   width: 220px;
   height: 220px;
   opacity: 1;
 }
 
-.overlay {
+.phaseOne .overlay {
         width: 40%;
         padding: 30px;
     }
 
-    .overlay button {
+    .phaseOne .overlay button {
         font-size: 16px;
     }
 
-#layer1 {
+.phaseOne #layer1 {
     transition: transform 1s ease, opacity 1s ease; /* Smooth transition for position and opacity */
 }
 
-.slide-up {
+.phaseOne .slide-up {
     transform: translate(-50%, -200%);
     opacity: 0; 
 }
 
+.phaseTwo .wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the cards horizontally */
+  gap: 1rem; /* Adds spacing between cards */
+  margin-top: 30px;
+}
+
+.phaseTwo .wrapper .card {
+  margin: 0; /* Reset margins to ensure consistency */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 320px; /* Fixed width */
+  height: 550px; /* Fixed height */
+  border-radius: 0.25rem;
+  background-color: rgba(17, 24, 39, 1);
+  padding: 1.5rem;
+  box-sizing: border-box; /* Ensures padding doesn't affect dimensions */
+  overflow: hidden; /* Prevents content overflow */
+}
+
+.phaseTwo .wrapper .header {
+  display: flex;
+  flex-direction: column;
+}
+
+.phaseTwo .wrapper .title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.phaseTwo .wrapper .price {
+  font-size: 3.75rem;
+  line-height: 1;
+  font-weight: 700;
+  color: #fff;
+}
+
+.phaseTwo .wrapper .desc {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.625;
+  color: rgba(156, 163, 175, 1);
+}
+
+.phaseTwo .wrapper .lists {
+  margin-bottom: 1.5rem;
+  flex: 1 1 auto; /* Allows the list to stretch within the card */
+  color: rgba(156, 163, 175, 1);
+}
+
+.phaseTwo .wrapper .lists .list {
+  margin-bottom: 0.5rem;
+  display: flex;
+  margin-left: 0.5rem;
+}
+
+.phaseTwo .wrapper .lists .list svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  color: rgba(167, 139, 250, 1);
+}
+
+.phaseTwo .wrapper .action {
+  border: none;
+  outline: none;
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: rgba(167, 139, 250, 1);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(17, 24, 39, 1);
+}
+
+.phaseTwo .wrapper .price:hover {
+  color: rgb(167, 139, 250); /* Change text color on hover */
+  text-decoration: underline; /* Add underline on hover */
+  transform: scale(1.05); /* Slightly enlarge the text */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for the action button */
+.phaseTwo .wrapper .action:hover {
+  background-color: rgb(167, 139, 250); /* Change background color of the button on hover */
+  color: rgba(17, 24, 39, 1); /* Change text color to dark */
+  transform: scale(1.05); /* Slightly enlarge the button */
+  transition: all 0.3s ease; /* Smooth transition for the effect */
+}
+
+/* Hover effect for card title */
+.phaseTwo .wrapper .title:hover {
+  color: rgb(167, 139, 250); /* Change color of the title on hover */
+  transform: scale(1.05); /* Slightly enlarge the title text */
+  transition: all 0.3s ease; /* Smooth transition for the effect */
+}
+
+/* Hover effect for card description */
+.phaseTwo .wrapper .desc:hover {
+  color: rgb(167, 139, 250); /* Change color of the description text */
+  transform: scale(1.05); /* Slightly enlarge the description text */
+  transition: all 0.3s ease; /* Smooth transition for the effect */
+}
+
+/* Hover effect for list items */
+.phaseTwo .wrapper .lists .list:hover {
+  color: rgb(167, 139, 250); /* Change color of the list text */
+  transform: scale(1.05); /* Slightly enlarge the list item text */
+  transition: all 0.3s ease; /* Smooth transition for the effect */
+}
